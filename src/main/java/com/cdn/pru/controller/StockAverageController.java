@@ -12,8 +12,13 @@ import java.math.BigDecimal;
 @RestController
 public class StockAverageController {
 
-    @Autowired
+
     private StockAverageCalculatorService stockAverageCalculatorService;
+
+    @Autowired
+    public StockAverageController(StockAverageCalculatorService stockAverageCalculatorService) {
+        this.stockAverageCalculatorService = stockAverageCalculatorService;
+    }
 
     @GetMapping("/simulate")
     public StockAverageInfo getPrud(@RequestParam String instrument, @RequestParam int nbShares, @RequestParam BigDecimal price) {
